@@ -2,12 +2,13 @@
   "apps": [
     {
       "name": "summit-endpoint",
-      "script": "dist/server.js",
+      "script": "src/server.ts",
       "instances": 1,
       "autorestart": true,
       "watch": false,
       "time": true,
-      "node_args": "--experimental-specifier-resolution=node",
+      "interpreter": "node",
+      "interpreter_args": "--loader ts-node/esm --experimental-specifier-resolution=node",
       "env": {
         "NODE_ENV": "production"
       }
