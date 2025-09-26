@@ -51,7 +51,7 @@ export const verifyPassController = catchAsync(
 export const updateAttendController = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
-     if (!id) {
+    if (!id) {
       throw new ApiError(httpStatus.NOT_ACCEPTABLE, "id is required");
     }
     const updated = await updateAttendById(id, req.body);
@@ -62,7 +62,7 @@ export const updateAttendController = catchAsync(
 export const deleteAttendController = catchAsync(
   async (req: Request, res: Response) => {
     const { id } = req.params;
-     if (!id) {
+    if (!id) {
       throw new ApiError(httpStatus.NOT_ACCEPTABLE, "id is required");
     }
     await deleteAttendById(id);

@@ -33,28 +33,34 @@ const getEventController = catchAsync(async (req: Request, res: Response) => {
   handleResponse(res, httpStatus.OK, "Event retrieved successfully", event);
 });
 
-const queryEventsController = catchAsync(async (req: Request, res: Response) => {
-  const result = await queryEvents(req.query);
-  handleResponse(res, result.code, result.message, result.data);
-});
-
-const updateEventController = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  if (!id) {
-    throw new ApiError(httpStatus.NOT_ACCEPTABLE, "id is required");
+const queryEventsController = catchAsync(
+  async (req: Request, res: Response) => {
+    const result = await queryEvents(req.query);
+    handleResponse(res, result.code, result.message, result.data);
   }
-  const updated = await updateEventById(id, req.body);
-  handleResponse(res, httpStatus.OK, "Event updated successfully", updated);
-});
+);
 
-const deleteEventController = catchAsync(async (req: Request, res: Response) => {
-  const { id } = req.params;
-  if (!id) {
-    throw new ApiError(httpStatus.NOT_ACCEPTABLE, "id is required");
+const updateEventController = catchAsync(
+  async (req: Request, res: Response) => {
+    const { id } = req.params;
+    if (!id) {
+      throw new ApiError(httpStatus.NOT_ACCEPTABLE, "id is required");
+    }
+    const updated = await updateEventById(id, req.body);
+    handleResponse(res, httpStatus.OK, "Event updated successfully", updated);
   }
-  await deleteEventById(id);
-  handleResponse(res, httpStatus.OK, "Event deleted successfully", null);
-});
+);
+
+const deleteEventController = catchAsync(
+  async (req: Request, res: Response) => {
+    const { id } = req.params;
+    if (!id) {
+      throw new ApiError(httpStatus.NOT_ACCEPTABLE, "id is required");
+    }
+    await deleteEventById(id);
+    handleResponse(res, httpStatus.OK, "Event deleted successfully", null);
+  }
+);
 
 export {
   createEventController,

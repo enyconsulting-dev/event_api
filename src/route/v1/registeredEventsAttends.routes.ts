@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import validate from "../../middleware/validate";
 import {
   registerAttendController,
@@ -17,7 +17,7 @@ import {
   verifyPassValidation,
 } from "../../validation/registeredEventsAttendsValid";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/", validate(registerAttendValidation), registerAttendController);
 router.get("/", validate(queryAttendValidation), queryAttendsController);

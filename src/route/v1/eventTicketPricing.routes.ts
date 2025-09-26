@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import validate from "../../middleware/validate";
 import {
   createPricingController,
@@ -15,7 +15,7 @@ import {
   queryPricingValidation,
 } from "../../validation/eventTicketPricingValid";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/", validate(createPricingValidation), createPricingController);
 router.get("/", validate(queryPricingValidation), queryPricingsController);

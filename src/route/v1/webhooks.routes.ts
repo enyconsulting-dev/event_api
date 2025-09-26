@@ -1,7 +1,7 @@
-import express from "express";
+import express, { Router } from "express";
 import { flutterwaveWebhookController } from "../../controller/webhook.controller";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/flutterwave", flutterwaveWebhookController);
 
