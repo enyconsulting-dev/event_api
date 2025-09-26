@@ -1,4 +1,4 @@
-import { EventModel, type Location } from "../model/index";
+import { EventModel, type CreateLocationPayload } from "../model/index";
 import ApiError from "../utils/ApiError";
 import getPaginatedData from "../utils/paginationQueries";
 import httpStatus from "http-status";
@@ -7,12 +7,14 @@ interface CreateEventPayload {
   title: string;
   description?: string;
   eventImage?: string;
-  locations: Location[];
 }
 
 /** Create a new event */
 const createEvent = async (payload: CreateEventPayload) => {
   const event = await EventModel.create(payload);
+  if (!event) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Event not Created");
+  }
   return event;
 };
 

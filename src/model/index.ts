@@ -1,5 +1,6 @@
 import EventModel from "./event.model";
-import type { Location } from "./event.model";
+import LocationModel from "./location.model";
+import type { LocationDocument, CreateLocationPayload } from "./location.model";
 import EventTicketPricingModel from "./eventTicketPricing.model";
 import type {
   EventTicketPricingDocument,
@@ -11,12 +12,13 @@ import type {
   RegisteredAttendPayload,
 } from "./registeredEventsAttends.model";
 
-export { EventModel, EventTicketPricingModel, RegisteredAttendModel };
+export { EventModel, LocationModel, EventTicketPricingModel, RegisteredAttendModel };
 
 export type {
-  Location,
+  LocationDocument,
   EventTicketPricingDocument,
   EventTicketPricingPayload,
   RegisteredAttendDocument,
   RegisteredAttendPayload,
+  CreateLocationPayload
 };
