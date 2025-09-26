@@ -3,8 +3,6 @@ import express, { Router, type Application } from "express";
 import session from "express-session";
 import passport from "passport";
 import morgan from "morgan";
-import bodyParser from "body-parser";
-import path from "path";
 import cors from "cors";
 import httpStatus from "http-status";
 import {config} from "./config/index";
