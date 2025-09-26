@@ -1,0 +1,46 @@
+[
+  {
+    "title": "Community Cleanup Day",
+    "description": "Neighborhood volunteers gather to clean up the park and surrounding streets.",
+    "locations": [
+      {
+        "name": "Riverside Park",
+        "address": "123 River St, Springfield",
+        "startDate": "2025-10-10T09:00:00.000Z",
+        "endDate": "2025-10-10T12:00:00.000Z",
+        "coordinates": [-122.4194, 37.7749]
+      }
+    ]
+  },
+  {
+    "title": "Outdoor Concert Series",
+    "description": "Live music featuring local bands across multiple weekends.",
+    "locations": [
+      {
+        "name": "Central Green",
+        "address": "200 Main Ave, Springfield",
+        "startDate": "2025-07-05T18:00:00.000Z",
+        "coordinates": [-122.431297, 37.773972]
+      },
+      {
+        "name": "Lakeside Stage",
+        "address": "1 Lakeview Dr, Springfield",
+        "startDate": "2025-07-12T18:30:00.000Z",
+        "coordinates": [-122.446747, 37.761494]
+      }
+    ]
+  },
+  {
+    "title": "Tech Meetup: AI in Production",
+    "description": "An evening of talks and networking about deploying AI systems.",
+    "locations": [
+      {
+        "name": "Startup Hub",
+        "address": "50 Innovation Way, Springfield",
+        "startDate": "2025-09-30T18:00:00.000Z",
+        "endDate": "2025-09-30T21:00:00.000Z",
+        "coordinates": [-122.4030, 37.7890]
+      }
+    ]
+  }
+]
