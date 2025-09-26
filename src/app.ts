@@ -5,7 +5,7 @@ import passport from "passport";
 import morgan from "morgan";
 import cors from "cors";
 import httpStatus from "http-status";
-import {config} from "./config/index";
+import { config } from "./config/index";
 import routes from "./route/v1/index";
 import "./lib/firebase";
 import "./lib/smtp";
@@ -39,7 +39,7 @@ app.use(
     secret: config.session.secret,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: config.env === 'production' }
+    cookie: { secure: config.env === "production" },
   })
 );
 
@@ -50,8 +50,8 @@ if (config.env !== "production" && config.env !== "test") {
         write: (message: string) => {
           // Log to a file or external service
           console.log(message.trim());
-        }
-      }
+        },
+      },
     })
   );
 }
@@ -78,7 +78,7 @@ app.use("/v1", routes);
 
 // send back a 404 error for any unknown api request
 app.use((_req, _res, next) => {
-  next(new ApiError(httpStatus.NOT_FOUND, 'Not found'));
+  next(new ApiError(httpStatus.NOT_FOUND, "Not found"));
 });
 
 // convert error to ApiError, if needed
