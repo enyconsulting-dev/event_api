@@ -7,7 +7,7 @@
     "dev": "nodemon --watch src --exec node --loader ts-node/esm --experimental-specifier-resolution=node src/server.ts",
     "test": "jest --runInBand",
     "build": "tsc",
-    "start": "node --experimental-specifier-resolution=node dist/server.js"
+    "start": "pm2 start ecosystem.config.json --no-daemon"
   },
   "keywords": [],
   "author": "",
@@ -79,6 +79,7 @@
     "mock-aws-s3": "^4.0.2",
     "mongodb-memory-server": "^8.16.1",
     "nodemon": "^3.1.10",
+    "pm2": "^6.0.13",
     "rollup": "^4.46.2",
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.4",

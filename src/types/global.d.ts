@@ -15,4 +15,16 @@ declare global {
   var httpStatus: typeof httpStatusType;
 }
 
+declare module 'express' {
+  interface Request {
+    query: any;
+    params: any;
+    body: any;
+  }
+
+  interface Response {
+    status(code: number): Response;
+  }
+}
+
 export {};
