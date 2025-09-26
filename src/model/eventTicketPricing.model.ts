@@ -30,7 +30,7 @@ const EventTicketPricingSchema = new Schema<EventTicketPricingDocument>(
   { timestamps: true }
 );
 
-EventTicketPricingSchema.pre("save", async function (next) {
+EventTicketPricingSchema.pre("save", async function (this: EventTicketPricingDocument, next) {
   try {
     const EventModel = mongoose.model("Event");
     const event = await EventModel.findById(this.eventId);

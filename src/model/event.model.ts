@@ -19,7 +19,7 @@ export interface EventDocument extends Document {
   updatedAt: Date;
 }
 
-const LocationSchema = new Schema<Location>(
+const LocationSchema = new Schema(
   {
     name: { type: String },
     startDate: { type: Date },
