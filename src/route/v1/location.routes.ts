@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Router } from "express";
 import validate from "../../middleware/validate";
 import {
   createLocationController,
@@ -15,7 +15,7 @@ import {
   queryLocationValidation,
 } from "../../validation/locationValid";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 router.post("/", validate(createLocationValidation), createLocationController);
 router.get("/", validate(queryLocationValidation), queryLocationsController);

@@ -13,7 +13,6 @@ const generatePassId = () => randomBytes(8).toString("hex");
 
 const registerAttend = async (payload: RegisteredAttendPayload) => {
   const doc = await RegisteredAttendModel.create({ ...payload });
-  doc.passId = generatePassId();
 
   // Fetch pricing details
   const PricingModel = mongoose.model("EventTicketPricing");
