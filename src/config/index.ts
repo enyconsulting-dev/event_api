@@ -11,6 +11,7 @@ const envVarsSchema = Joi.object()
     MONGODB_URI: Joi.string(),
 
     JWT_SECRET: Joi.string(),
+    SESSION_SECRET: Joi.string(),
     JWT_ACCESS_EXPIRATION_MINUTES: Joi.number(),
     JWT_REFRESH_EXPIRATION_MINUTES: Joi.number(),
 
@@ -60,6 +61,10 @@ export const config = {
     secret: envVars.JWT_SECRET,
     accessExpirationMinutes: envVars.JWT_ACCESS_EXPIRATION_MINUTES,
     refreshExpirationMinutes: envVars.JWT_REFRESH_EXPIRATION_MINUTES,
+  },
+
+  session: {
+    secret: envVars.SESSION_SECRET,
   },
 
   email: {

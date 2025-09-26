@@ -1,10 +1,10 @@
-import express from "express";
+import express, { Router } from "express";
 import eventRoutes from "./event.routes";
 import eventPricingRoutes from "./eventTicketPricing.routes";
 import registeredAttendsRoutes from "./registeredEventsAttends.routes";
 import webhooksRoutes from "./webhooks.routes";
 
-const router = express.Router();
+const router: Router = express.Router();
 
 const defaultRoutes = [
   {

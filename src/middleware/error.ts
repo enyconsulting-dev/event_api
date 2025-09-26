@@ -1,7 +1,6 @@
 import mongoose from "mongoose";
 import httpStatus from "http-status";
-import type { Request, Response } from "express-serve-static-core";
-import type { NextFunction, ErrorRequestHandler } from "express";
+import type { Request, Response } from "express";import type { NextFunction, ErrorRequestHandler } from "express";
 import { config } from "../config/index";
 import logger from "../config/logger";
 import ApiError from "../utils/ApiError";

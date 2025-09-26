@@ -1,5 +1,5 @@
 import "dotenv/config";
-import express from "express";
+import express, { Router, type Application } from "express";
 import session from "express-session";
 import passport from "passport";
 import morgan from "morgan";
@@ -14,10 +14,11 @@ import "./lib/smtp";
 import { connectToDatabase } from "./lib/database";
 import ApiError from "./utils/ApiError";
 import { errorConverter, errorHandler } from "./middleware/error";
+import type { Request, Response } from "express";
 
 declare global {
   // eslint-disable-next-line no-var
-  var router: import("express").Router;
+  var router: Router;
   var catchAsync: any;
   var getId: any;
   var statusCodeMap: any;
@@ -26,7 +27,7 @@ declare global {
   var httpStatus: typeof import("http-status");
 }
 
-const app = express();
+const app: Application = express();
 
 app.use(cors());
 
@@ -37,10 +38,10 @@ app.use((req, res, next) => {
 
 app.use(
   session({
-    secret: "myBigSecret",
+    secret: config.session.secret,
     resave: false,
     saveUninitialized: true,
-    cookie: { secure: false }
+    cookie: { secure: config.env === 'production' }
   })
 );
 
