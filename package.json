@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "nodemon --watch src --exec node --loader ts-node/esm --experimental-specifier-resolution=node src/server.ts",
     "test": "jest --runInBand",
-    "build": "rollup -c",
-    "start": "node dist/server.js"
+    "build": "tsc",
+    "start": "pm2 start ecosystem.config.json --no-daemon"
   },
   "keywords": [],
   "author": "",
@@ -64,6 +64,7 @@
     "@types/jest": "^29.5.14",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/mocha": "^10.0.10",
+    "@types/mongoose": "^5.11.97",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.2.1",
     "@types/node-cron": "^3.0.11",
@@ -78,6 +79,7 @@
     "mock-aws-s3": "^4.0.2",
     "mongodb-memory-server": "^8.16.1",
     "nodemon": "^3.1.10",
+    "pm2": "^6.0.13",
     "rollup": "^4.46.2",
     "supertest": "^7.1.4",
     "ts-jest": "^29.4.4",

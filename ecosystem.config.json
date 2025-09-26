@@ -1,0 +1,16 @@
+{
+  "apps": [
+    {
+      "name": "summit-endpoint",
+      "script": "dist/server.js",
+      "instances": 1,
+      "autorestart": true,
+      "watch": false,
+      "time": true,
+      "node_args": "--experimental-specifier-resolution=node",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    }
+  ]
+}
