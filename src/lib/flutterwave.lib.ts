@@ -55,6 +55,7 @@ const flutterwaveService = {
       const { data } = await axios.request(options);
       return data;
     } catch (error: any) {
+      console.log(error);
       throw new ApiError(
         500,
         "Flutterwave payment initiation failed: " + error.message

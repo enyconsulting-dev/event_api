@@ -3,6 +3,7 @@ import eventRoutes from "./event.routes";
 import eventPricingRoutes from "./eventTicketPricing.routes";
 import registeredAttendsRoutes from "./registeredEventsAttends.routes";
 import webhooksRoutes from "./webhooks.routes";
+import locationRoutes from "./location.routes";
 
 const router: Router = express.Router();
 
@@ -12,16 +13,20 @@ const defaultRoutes = [
     route: eventRoutes,
   },
   {
-    path: "/events/pricing",
+    path: "/event-pricing",
     route: eventPricingRoutes,
   },
   {
-    path: "/events/attends",
+    path: "/events-attends",
     route: registeredAttendsRoutes,
   },
   {
     path: "/webhooks",
     route: webhooksRoutes,
+  },
+  {
+    path: "/event-locations",
+    route: locationRoutes,
   },
 ];
 

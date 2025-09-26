@@ -32,7 +32,7 @@ const RegisteredAttendSchema = new Schema<RegisteredAttendDocument>(
     mobileNumber: { type: String },
     paymentReference: { type: String },
     isPaymentSuccess: { type: Boolean, default: false },
-    passId: { type: String, required: false, unique: true },
+    passId: { type: String, required: false },
     paymentMeta: { type: Schema.Types.Mixed },
   },
   { timestamps: true }

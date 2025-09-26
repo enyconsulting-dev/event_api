@@ -9,6 +9,9 @@ import httpStatus from "http-status";
 /** Create a new ticket pricing */
 const createPricing = async (payload: EventTicketPricingPayload) => {
   const pricing = await EventTicketPricingModel.create(payload);
+  if (!pricing) {
+    throw new ApiError(httpStatus.NOT_FOUND, "Pricing not found");
+  }
   return pricing;
 };
 
@@ -28,6 +31,7 @@ const queryPricings = async (queryParams: any) => {
     filters: {},
     limit: queryParams.limit || 10,
     exclude: [],
+    populate: ['eventId', 'locationId']
   });
 };
 

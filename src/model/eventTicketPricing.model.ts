@@ -22,7 +22,7 @@ export interface EventTicketPricingPayload {
 const EventTicketPricingSchema = new Schema<EventTicketPricingDocument>(
   {
     eventId: { type: Schema.Types.ObjectId, ref: "Event", required: true },
-    locationId: { type: Schema.Types.ObjectId, required: true },
+    locationId: { type: Schema.Types.ObjectId, ref: "Location", required: true },
     price: { type: Number, required: true, min: 0 },
     currency: { type: String, required: true, enum: ["USD", "EUR", "NGN"] },
     benefits: { type: [String], default: [] },
@@ -33,8 +33,9 @@ const EventTicketPricingSchema = new Schema<EventTicketPricingDocument>(
 EventTicketPricingSchema.pre("save", async function (this: EventTicketPricingDocument, next) {
   try {
     const EventModel = mongoose.model("Event");
-    const event = await EventModel.findById(this.eventId);
+    const LocationModel = mongoose.model("Location");
 
+    const event = await EventModel.findById(this.eventId);
     if (!event) {
       throw new ApiError(
         httpStatus.NOT_FOUND,
@@ -42,25 +43,26 @@ EventTicketPricingSchema.pre("save", async function (this: EventTicketPricingDoc
       );
     }
 
-    if (this.locationId) {
-      const locationExists = event.locations.some(
-        (location: any) =>
-          location._id.toString() === this.locationId.toString()
+    const location = await LocationModel.findById(this.locationId);
+    if (!location) {
+      throw new ApiError(
+        httpStatus.NOT_FOUND,
+        "Referenced location does not exist"
       );
+    }
 
-      if (!locationExists) {
-        throw new ApiError(
-          httpStatus.NOT_FOUND,
-          "Referenced locationId does not exist in the event"
-        );
-      }
+    if (location.eventId.toString() !== this.eventId.toString()) {
+      throw new ApiError(
+        httpStatus.BAD_REQUEST,
+        "Location does not belong to the specified event"
+      );
     }
 
     next();
   } catch (error: any) {
     throw new ApiError(
-      httpStatus.NOT_FOUND,
-      "Referenced locationId does not exist in the event"
+      httpStatus.BAD_REQUEST,
+      error.message || "Validation error"
     );
   }
 });
