@@ -8,7 +8,6 @@
       "watch": false,
       "time": true,
       "interpreter": "node",
-      "interpreter_args": "--loader ts-node/esm --experimental-specifier-resolution=node",
       "env": {
         "NODE_ENV": "production"
       }
